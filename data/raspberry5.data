@@ -1,0 +1,6 @@
+classes=5
+train=./data/raspberry5_train.txt
+valid=./data/raspberry5_val.txt
+names=data/raspberry5.names
+backup=backup/
+eval=coco
