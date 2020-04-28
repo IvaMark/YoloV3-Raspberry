@@ -46,10 +46,10 @@ Besides training set repository contains dockerized application for image detect
 
 #### Example (yolov3 weights)
 
-![Upload](readme-images/yolo-upload.png?raw=true "Upload")
-![Result](readme-images/yolo-result.png?raw=true "Result")
+![Upload](readme-images/yolo-upload.png)
+![Result](readme-images/yolo-result.png)
 
 #### Example (raspberry weights)
 
-![Upload](readme-images/yolo-upload2.png?raw=true "Upload")
-![Result](readme-images/yolo-result2.png?raw=true "Result")
+![Upload](readme-images/yolo-upload2.png)
+![Result](readme-images/yolo-result2.png)
