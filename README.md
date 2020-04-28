@@ -30,10 +30,10 @@ Images and prebuilt weights are not included into repository because of file siz
 #### Image detection
 
 ##### Good
-![Upload](readme-images/detected-good.jpg?raw=true "Upload")
+![Upload](readme-images/detected-good.jpg)
 
 ##### Bad
-![Upload](readme-images/detected-bad.jpg?raw=true "Upload")
+![Upload](readme-images/detected-bad.jpg)
 
 ### Dockerized application
 
