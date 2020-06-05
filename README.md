@@ -25,7 +25,7 @@ git clone https://github.com/ultralytics/yolov3.git
 * Names file (class list)
 * Labels
 
-Images and prebuilt weights are not included into repository because of file size. Please contact author in order to acquire access to these files. Link to google drive https://docs.google.com/spreadsheets/d/15xf-dvmk5gps12O_KHEf0taY0IXmpr7uqtuWBkKIdzs/edit?usp=sharing
+Images and prebuilt weights are not included into repository because of file size. Please contact author in order to acquire access to these files. Link to google drive https://drive.google.com/drive/folders/1n-O9RY-0Azd68JihvcZ0HH5e3IDELSGj?usp=sharing
 
 #### Image detection
 
