@@ -38,6 +38,17 @@
   padding: 15px;
 }
 
+#output{
+  width: 50%;
+  height: 150px;
+  background-color: #000;
+  color: #090;
+  font-weight: bold;
+  font-family: monospace;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;

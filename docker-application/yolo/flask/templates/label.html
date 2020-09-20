@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+{% block title %}Add image labels{% endblock %}
+{% block pagecss %}
+    <link href="static/vendor/selectareas/resources/jquery.selectareas.css" rel="stylesheet">
+{% endblock %}
+{% block pagejs %}
+    <script src="static/vendor/selectareas/jquery.selectareas.js"></script>
+    <script>
+        function areaToString (area) {
+            return (typeof area.id === "undefined" ? "" : (area.id + ": ")) + area.x + ':' + area.y  + ' ' + area.width + 'x' + area.height + '<br />'
+        }
+
+        function output (text) {
+            $('#output').html(text);
+        }
+
+        function displayAreas (areas) {
+            var text = "";
+            $.each(areas, function (id, area) {
+                text += areaToString(area);
+            });
+            output(text);
+        };
+
+        $('#image').selectAreas({
+            allowDelete: false,
+            onChanged: function() {
+                var label = prompt('Enter label');
+                if (label != null && label != "") {
+                }
+            }
+        });
+
+        $('#generate_labels').click(function () {
+            var areas = $('#image').selectAreas('relativeAreas');
+            displayAreas(areas);
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <img id="image" src="https://images.freeimages.com/images/small-previews/05e/on-the-road-6-1384796.jpg" /> 
+    <div class="row">
+        <div class="col-12 pt-3">
+            <button id="generate_labels" class="btn btn-primary">Generate labels</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-3">
+            <div id="output"></div>
+        </div>
+    </div>
+{% endblock %}

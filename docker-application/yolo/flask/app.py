@@ -64,6 +64,10 @@ def upload_file():
 			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
 			return redirect(request.url)
 
+@app.route('/label')
+def label():
+	return render_template('label.html')
+
 if __name__ == "__main__": 
 	app.run(host ='0.0.0.0', port = 80, debug = True) 
 
