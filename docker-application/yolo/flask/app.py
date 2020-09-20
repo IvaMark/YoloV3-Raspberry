@@ -1,7 +1,7 @@
 import os
 import urllib.request
 import glob
-import time;
+import time
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap
@@ -38,6 +38,12 @@ def upload_file():
 			return redirect(request.url)
 		if file and allowed_file(file.filename):
 			weights_file = request.values.get('weights_file')
+			if weights_file == 'raspberry':
+				names_file = '/home/yolov3/data/raspberry.names'
+			else:
+				names_file = '/home/yolov3/data/coco.names'
+			names_file_content = open(names_file, 'r').read()
+			all_classes = names_file_content.splitlines()
 			filename = secure_filename(file.filename)
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			os.system('find /home/flask/static/uploads -type f -print0| xargs -0 rm')
@@ -53,7 +59,7 @@ def upload_file():
 			os.system(detect_cmd)
 			os.system('mv /home/yolov3/output/* /home/flask/static/uploads/output')
 
-			return render_template("image.html", filename = filename, current_time = time.time())
+			return render_template("image.html", filename = filename, current_time = time.time(), all_classes = all_classes)
 		else:
 			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
 			return redirect(request.url)
