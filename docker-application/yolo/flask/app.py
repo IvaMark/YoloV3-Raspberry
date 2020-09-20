@@ -65,8 +65,36 @@ def upload_file():
 			return redirect(request.url)
 
 @app.route('/label')
+def label_upload():
+	return render_template('label_upload.html', weights = available_weights)
+
+@app.route('/label', methods=['POST'])
 def label():
-	return render_template('label.html')
+	if request.method == 'POST':
+		if 'file' not in request.files:
+			flash('No file part')
+			return redirect(request.url)
+		file = request.files['file']
+		if file.filename == '':
+			flash('No file selected for uploading')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			weights_file = request.values.get('weights_file')
+			if weights_file == 'raspberry':
+				names_file = '/home/yolov3/data/raspberry.names'
+			else:
+				names_file = '/home/yolov3/data/coco.names'
+			names_file_content = open(names_file, 'r').read()
+			all_classes = names_file_content.splitlines()
+			filename = secure_filename(file.filename)
+			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+			os.system('find /home/flask/static/uploads -type f -print0| xargs -0 rm')
+			os.system('find /home/flask/static/uploads/output -type f -print0| xargs -0 rm')
+			file.save(filepath)
+			return render_template("label.html", filename = filename, current_time = time.time(), all_classes = all_classes)
+		else:
+			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
+			return redirect(request.url)
 
 if __name__ == "__main__": 
 	app.run(host ='0.0.0.0', port = 80, debug = True) 
